@@ -6,6 +6,7 @@ import SignupHeader from './SignupHeader';
 import LockIcon from '../Icons/LockIcons';
 import TextInput from '../Form/Input';
 import PrivacyPolicy from './PrivacyPolicy';
+import { registerWithEmailAndPassword } from 'firebase/auth';
 
 interface SignupInputs {
   email: string;
@@ -36,6 +37,7 @@ export default function Signup() {
 
   const onSubmit: SubmitHandler<SignupInputs> = (data) => {
     console.log(data);
+    registerWithEmailAndPassword(data.email, data.password)
   };
 
   const {

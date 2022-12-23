@@ -2,3 +2,5 @@ node_modules
 yarn.lock
 .next
 coverage
+src/utils/firebaseSDK.ts
+src/utils/firebaseConfig.ts
