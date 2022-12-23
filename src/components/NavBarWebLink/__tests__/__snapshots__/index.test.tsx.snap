@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It should render a link 1`] = `
+<a
+  className="block mt-4 md:mt-2 text-md sm:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+  href="https://tailwindcss.com/"
+>
+  tailwind
+</a>
+`;

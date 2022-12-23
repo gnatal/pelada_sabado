@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It should show close the menu 1`] = `
+<div
+  className="hidden sm:hidden bg-teal-500 h-screen w-screen"
+>
+  <div
+    className="w-screen pl-6 pb-2 pt-2 border"
+  >
+    <a
+      className="block font-bold text-md text-teal-100 hover:text-white"
+      href="/"
+    >
+      início
+    </a>
+  </div>
+  <div
+    className="w-screen pl-6 pb-2 pt-2 border"
+  >
+    <a
+      className="block font-bold text-md text-teal-100 hover:text-white"
+      href="/about"
+    >
+      sobre
+    </a>
+  </div>
+  <div
+    className="w-screen pl-6 pb-2 pt-2 border"
+  >
+    <a
+      className="block font-bold text-md text-teal-100 hover:text-white"
+      href="/posts"
+    >
+      blog
+    </a>
+  </div>
+  <div
+    className="w-screen pl-6 pb-2 pt-2 border"
+  >
+    <a
+      className="block font-bold text-md text-teal-100 hover:text-white"
+      href="/login"
+    >
+      login
+    </a>
+  </div>
+</div>
+`;
+
+exports[`It should show open  menu 1`] = `
+<div
+  className="block sm:hidden bg-teal-500 h-screen w-screen"
+>
+  <div
+    className="w-screen pl-6 pb-2 pt-2 border"
+  >
+    <a
+      className="block font-bold text-md text-teal-100 hover:text-white"
+      href="/"
+    >
+      início
+    </a>
+  </div>
+  <div
+    className="w-screen pl-6 pb-2 pt-2 border"
+  >
+    <a
+      className="block font-bold text-md text-teal-100 hover:text-white"
+      href="/about"
+    >
+      sobre
+    </a>
+  </div>
+  <div
+    className="w-screen pl-6 pb-2 pt-2 border"
+  >
+    <a
+      className="block font-bold text-md text-teal-100 hover:text-white"
+      href="/posts"
+    >
+      blog
+    </a>
+  </div>
+  <div
+    className="w-screen pl-6 pb-2 pt-2 border"
+  >
+    <a
+      className="block font-bold text-md text-teal-100 hover:text-white"
+      href="/login"
+    >
+      login
+    </a>
+  </div>
+</div>
+`;

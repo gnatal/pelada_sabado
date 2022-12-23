@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It should write an span in the nav header 1`] = `
+<div
+  className="w-full hidden flex-grow sm:flex sm:items-center sm:w-auto sm:block"
+>
+  <div
+    className="text-sm sm:flex-grow"
+  >
+    <a
+      className="block mt-4 md:mt-2 text-md sm:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+      href="/"
+    >
+      início
+    </a>
+    <a
+      className="block mt-4 md:mt-2 text-md sm:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+      href="/about"
+    >
+      sobre
+    </a>
+    <a
+      className="block mt-4 md:mt-2 text-md sm:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+      href="/posts"
+    >
+      blog
+    </a>
+  </div>
+  <div>
+    <a
+      className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 md:mt-0"
+      href="/login"
+    >
+      login
+    </a>
+  </div>
+</div>
+`;

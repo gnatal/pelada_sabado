@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It should show a link 1`] = `
+<div
+  className="w-screen pl-6 pb-2 pt-2 border"
+>
+  <a
+    className="block font-bold text-md text-teal-100 hover:text-white"
+    href="/"
+  >
+    home
+  </a>
+</div>
+`;
