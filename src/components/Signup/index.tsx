@@ -6,7 +6,7 @@ import SignupHeader from './SignupHeader';
 import LockIcon from '../Icons/LockIcons';
 import TextInput from '../Form/Input';
 import PrivacyPolicy from './PrivacyPolicy';
-import { registerWithEmailAndPassword } from 'firebase/auth';
+import { registerWithEmailAndPassword } from 'firebase_support/auth';
 
 interface SignupInputs {
   email: string;

@@ -3,9 +3,11 @@ const missionStatement = 'Lorem ipsum dolor sit amet, consectetur adipiscing eli
 const contactHeader = 'Contact us?';
 const valuesHeader = 'Our values';
 
-export default {
+const texts = {
   missionHeader,
   missionStatement,
   contactHeader,
   valuesHeader,
-};
+}
+
+export default texts;

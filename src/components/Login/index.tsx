@@ -7,6 +7,9 @@ import LockIcon from '../Icons/LockIcons';
 import Checkbox from '../Form/Checkbox';
 import TextInput from '../Form/Input';
 import LoginHeader from './LoginHeader';
+import { loginWithEmailAndPassword } from 'firebase_support/auth';
+import { useRouter } from 'next/router';
+import Link from 'next/link'
 
 interface LoginInputs {
   email: string;
@@ -26,6 +29,7 @@ const passwordInputs = {
 };
 
 export default function Login() {
+  const router = useRouter()
   const formOptions = { resolver: yupResolver(validation.loginSchema) };
   const {
     register,
@@ -34,8 +38,15 @@ export default function Login() {
     formState: { errors },
   } = useForm<LoginInputs>(formOptions);
 
-  const onSubmit: SubmitHandler<LoginInputs> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
+    try {
+      console.log(data);
+      const response = await loginWithEmailAndPassword(data.email, data.password)
+      router.push('/profile')
+      console.log('response', response)
+    } catch (e) {
+      console.log(e)
+    }
   };
 
   return (
@@ -69,12 +80,12 @@ export default function Login() {
             <Checkbox label='Remember-me' elementId='remember' />
 
             <div className='text-sm'>
-              <a
+              <Link
                 href='/forgot-password'
                 className='font-medium text-indigo-600 hover:text-indigo-500'
               >
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
 

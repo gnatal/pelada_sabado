@@ -1,8 +1,9 @@
+import PrivateRoute from 'components/PrivateRoute';
 import Profile from 'components/Profile';
 import React from 'react';
 
 function ProfilePage() {
-  return (<Profile />);
+  return <PrivateRoute> <Profile /></PrivateRoute>;
 }
 
 export default ProfilePage;

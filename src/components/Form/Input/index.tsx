@@ -33,7 +33,8 @@ export default function TextInput({
       addedClasses = `${addedClasses} rounded-b-md`;
     }
     setRounds(addedClasses);
-  }, []);
+  }, [roundTop, roundBottom]);
+
   return (
     <div>
       <label htmlFor={elementId} className='sr-only'>

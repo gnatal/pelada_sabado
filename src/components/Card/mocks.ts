@@ -1,6 +1,6 @@
 import type { ICardProps } from '.';
 
-const cardMock:ICardProps = {
+const cardMock: ICardProps = {
   imageSrc: '/images/cat1.jpeg',
   text: 'Cats are so cute that you can\'t resist looking into it',
   imageAlt: 'Cute cat',
@@ -8,6 +8,8 @@ const cardMock:ICardProps = {
   tags: [],
 };
 
-export default {
+const mocks = {
   cardMock,
-};
+}
+
+export default mocks;

@@ -4,7 +4,7 @@ import NavBarMobile from './mobile';
 import NavHeader from './Navheader';
 import NavBarWeb from './web';
 
-function navBar({ blogName }: { blogName: string }) {
+function NavBar({ blogName }: { blogName: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -14,8 +14,8 @@ function navBar({ blogName }: { blogName: string }) {
         <NavBarWeb />
         <NavBarMobile isOpen={isOpen} setIsOpen={setIsOpen} />
       </nav>
-      <SideMenu isOpen={isOpen} />
+      <SideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   );
 }
-export default navBar;
+export default NavBar;

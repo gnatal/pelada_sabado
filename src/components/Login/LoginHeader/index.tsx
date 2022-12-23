@@ -1,4 +1,6 @@
+
 import React from 'react';
+import Link from 'next/link';
 
 export default function LoginHeader() {
   return (
@@ -13,12 +15,12 @@ export default function LoginHeader() {
       </h2>
       <p className='mt-2 text-center text-sm text-gray-600'>
         Or
-        <a
+        <Link
           href='/signup'
           className='font-medium text-indigo-600 hover:text-indigo-500'
         >
           {'Don\'t have an account click here'}
-        </a>
+        </Link>
       </p>
     </div>
   );
