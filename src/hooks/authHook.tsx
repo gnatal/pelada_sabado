@@ -10,10 +10,8 @@ export function useFirebaseAuth() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log('USER', user)
         setUser(user)
       } else {
-        console.log('USER', user)
         setUser(null)
       }
       setIsLoading(false)

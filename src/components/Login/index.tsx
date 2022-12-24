@@ -77,8 +77,6 @@ export default function Login() {
           </div>
 
           <div className='flex items-center justify-between'>
-            <Checkbox label='Remember-me' elementId='remember' />
-
             <div className='text-sm'>
               <Link
                 href='/forgot-password'
