@@ -9,7 +9,7 @@ const table = 'users'
 export const getUserByUUID = async (uuid: string) => {
   const q = query(collection(database, table), where("uid", "==", uuid));
   const querySnapshot = await getDocs(q);
-  let user: IUser = createEmptyUser();
+  let user: IUser = createEmptyUser(); ''
   querySnapshot.forEach((doc) => {
     console.log(doc.id, " => ", doc.data());
     user = (doc.data() as IUser);

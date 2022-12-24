@@ -29,23 +29,6 @@ export const registerWithEmailAndPassword = async (email: string, password: stri
   }
 };
 
-export const getUserByUUID = async (uuid: string) => {
-  // const users = collection(database, "users");
-  // const q = query(users, where('uuid', '==', uuid))
-  // const user = await getDocs(q)
-  // console.log('user', user)
-  // user.forEach((doc) => {
-  //   console.log('user', doc)
-  // })
-  const q = query(collection(database, "users"), where("uid", "==", uuid));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-  });
-
-  return true
-}
 
 export const logout = async () => {
   try {
