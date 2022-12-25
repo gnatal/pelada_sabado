@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
 import { auth } from 'utils/firebaseConfig'
 import { onAuthStateChanged } from 'firebase/auth'
+import { IUser } from 'firebase_support/models/User';
+import { getUserByUUID } from 'firebase_support/controller/UserController';
 
 export function useFirebaseAuth() {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<IUser | null>(null);
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user: any) => {
       if (user) {
-        setUser(user)
+        const fullUser = await getUserByUUID(user?.uid)
+        setUser(fullUser)
       } else {
         setUser(null)
       }

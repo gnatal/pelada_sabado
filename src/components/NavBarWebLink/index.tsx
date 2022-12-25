@@ -10,7 +10,7 @@ function NavBarWebLink({
   return (
     <a
       href={link}
-      className='block mt-4 md:mt-2 text-md sm:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4'
+      className='font-semibold block mt-4 md:mt-2 text-md sm:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4'
     >
       {placeholder}
     </a>

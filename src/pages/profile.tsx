@@ -3,7 +3,13 @@ import Profile from 'components/Profile';
 import React from 'react';
 
 function ProfilePage() {
-  return <PrivateRoute> <Profile /></PrivateRoute>;
+  return (
+    <>
+      <PrivateRoute allowedRoles={['admin', 'public']}>
+        <Profile />
+      </PrivateRoute>
+    </>
+  );
 }
 
 export default ProfilePage;

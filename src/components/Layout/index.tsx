@@ -6,7 +6,7 @@ import NavBar from '../NavBar';
 export default function Layout({ children }: { children: ReactElement }) {
   return (
     <>
-      <NavBar blogName='Blog do Natal' />
+      <NavBar blogName='Pelada da PM' />
       <main className='min-h-[80vh]'>{children}</main>
       <Footer />
     </>

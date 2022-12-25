@@ -2,46 +2,38 @@ import React, { type FormEvent } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import validation from '../../utils/validation';
+import { peladaSchema } from './validations';
 import LockIcon from '../Icons/LockIcons';
-import Checkbox from '../Form/Checkbox';
 import TextInput from '../Form/Input';
-import LoginHeader from './LoginHeader';
-import { loginWithEmailAndPassword } from 'firebase_support/auth';
+import PeladaHeader from './CreatePeladaHeader';
 import { useRouter } from 'next/router';
-import Link from 'next/link'
+import { IPelada } from 'firebase_support/models/Pelada';
+import { createPelada } from 'firebase_support/controller/PeladaController';
 
-interface LoginInputs {
-  email: string;
-  password: string;
-}
-
-const emailInputs = {
-  name: 'email',
-  type: 'email',
-  placeholder: 'email',
+const diaInputs = {
+  name: 'dia',
+  type: 'date',
+  placeholder: 'Dia',
 };
 
-const passwordInputs = {
-  name: 'password',
-  type: 'password',
-  placeholder: 'password',
+const horaInputs = {
+  name: 'hora',
+  type: 'text',
+  placeholder: 'Hora',
 };
 
-export default function Login() {
-  const router = useRouter()
-  const formOptions = { resolver: yupResolver(validation.loginSchema) };
+export default function CreatePelada() {
+  const formOptions = { resolver: yupResolver(peladaSchema) };
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<LoginInputs>(formOptions);
+  } = useForm<IPelada>(formOptions);
 
-  const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
+  const onSubmit: SubmitHandler<IPelada> = async (data) => {
     try {
-      const response = await loginWithEmailAndPassword(data.email, data.password)
-      router.push('/profile')
+      const response = await createPelada(data)
+      console.log('pelada', data, response)
     } catch (e) {
       console.log(e)
     }
@@ -50,39 +42,28 @@ export default function Login() {
   return (
     <div className='min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
       <div className='max-w-md w-full space-y-8'>
-        <LoginHeader />
+        <PeladaHeader />
         <form className='mt-8 space-y-6' onSubmit={handleSubmit(onSubmit)}>
           <input type='hidden' name='remember' value='true' />
           <div className='rounded-md shadow-sm -space-y-px'>
             <TextInput
-              label='Email address'
-              elementId='email'
+              label='Dia da pelada'
+              elementId='dia'
               register={register}
-              {...emailInputs}
+              {...diaInputs}
               errors={errors}
               roundBottom={false}
               roundTop
             />
             <TextInput
-              label='Password'
-              elementId='password'
+              label='Hora'
+              elementId='hora'
               register={register}
-              {...passwordInputs}
+              {...horaInputs}
               errors={errors}
               roundBottom
               roundTop={false}
             />
-          </div>
-
-          <div className='flex items-center justify-between'>
-            <div className='text-sm'>
-              <Link
-                href='/forgot-password'
-                className='font-medium text-indigo-600 hover:text-indigo-500'
-              >
-                Forgot your password?
-              </Link>
-            </div>
           </div>
 
           <div>
@@ -92,11 +73,11 @@ export default function Login() {
               className='group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
             >
               <LockIcon />
-              Sign in
+              Criar pelada
             </button>
           </div>
         </form>
       </div>
     </div>
-  );
+  )
 }

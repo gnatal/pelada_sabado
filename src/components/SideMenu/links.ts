@@ -18,8 +18,27 @@ const posts = {
   linkLabel: 'blog',
 };
 
+const peladas = {
+  linkURL: '/peladas',
+  linkLabel: 'Pelada'
+}
+
+const createPelada = {
+  linkURL: '/criarPelada',
+  linkLabel: 'Nova pelada'
+}
+
+
+const profile = {
+  linkURL: '/profile',
+  linkLabel: 'Perfil'
+}
+
 export default {
+  peladas,
+  createPelada,
   about,
+  profile,
   posts,
   login,
   home,
