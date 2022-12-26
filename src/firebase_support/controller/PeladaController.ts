@@ -17,3 +17,17 @@ export const createPelada = async (pelada: IPelada) => {
     return false;
   }
 }
+
+export const getAllPelada = async () => {
+  try {
+    const snapshot = await getDocs(collection(database, table))
+    let peladas: IPelada[] = [];
+    snapshot.forEach((doc) => {
+      peladas.push(({ uid: doc.id, ...doc.data() } as IPelada))
+    })
+    return peladas;
+  } catch (e) {
+    console.log('error creating pelada', e)
+    return false;
+  }
+}
