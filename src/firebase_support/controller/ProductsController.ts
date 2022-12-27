@@ -4,7 +4,7 @@ import { IProduct } from 'firebase_support/models/Products'
 
 const table = 'Products';
 
-export const getAllProducts = async () => {
+export const getAllProducts = async (): Promise<IProduct[]> => {
   try {
     const snapshot = await getDocs(collection(database, table))
     let products: IProduct[] = [];
@@ -14,6 +14,6 @@ export const getAllProducts = async () => {
     return products;
   } catch (e) {
     console.log('error getting products', e)
-    return false;
+    return ([] as IProduct[]);
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 export interface ICardProps {
   imageSrc: string;
@@ -6,6 +6,7 @@ export interface ICardProps {
   imageAlt: string;
   title: string;
   tags: Array<string>;
+  children?: ReactElement
 }
 
 export default function Card({
@@ -14,6 +15,7 @@ export default function Card({
   text,
   title,
   tags = [],
+  children
 }: ICardProps) {
   return (
     <div className='p-10'>
@@ -33,6 +35,7 @@ export default function Card({
             </span>
           ))}
         </div>
+        {children}
       </div>
     </div>
   );

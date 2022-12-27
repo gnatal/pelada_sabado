@@ -5,7 +5,6 @@ import type { ReactElement } from 'react';
 export default function PrivateRoute({ children, allowedRoles = ['public'] }: { children: ReactElement, allowedRoles?: string[] }) {
   const { user, isLoading } = useFirebaseAuth();
   const router = useRouter();
-  console.log(user)
 
   if (isLoading) {
     return (<div>
@@ -18,11 +17,6 @@ export default function PrivateRoute({ children, allowedRoles = ['public'] }: { 
     return (<></>)
 
   }
-
-  // if (user.role != role) {
-  //   router.replace('/profile')
-  //   return (<></>)
-  // }
 
   return (
     <>
