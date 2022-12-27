@@ -34,7 +34,14 @@ const profile = {
   linkLabel: 'Perfil'
 }
 
+const shopping = {
+  linkURL: '/shopping',
+  linkLabel: 'Produtos'
+}
+
+
 export default {
+  shopping,
   peladas,
   createPelada,
   about,

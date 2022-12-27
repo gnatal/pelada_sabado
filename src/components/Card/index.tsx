@@ -8,7 +8,7 @@ export interface ICardProps {
   tags: Array<string>;
 }
 
-export default function Function({
+export default function Card({
   imageSrc,
   imageAlt,
   text,

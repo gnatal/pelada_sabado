@@ -31,6 +31,7 @@ function NavBarWeb() {
         {user && (<>
           <NavBarWebLink link={links.peladas.linkURL} placeholder={links.peladas.linkLabel} />
           <NavBarWebLink link={links.profile.linkURL} placeholder={links.profile.linkLabel} />
+          <NavBarWebLink link={links.shopping.linkURL} placeholder={links.shopping.linkLabel} />
         </>)}
         {
           user?.role === 'admin' && (
