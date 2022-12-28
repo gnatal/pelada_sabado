@@ -13,12 +13,21 @@ export const loginWithEmailAndPassword = async (email: string, password: string)
   }
 }
 
-export const registerWithEmailAndPassword = async (email: string, password: string) => {
+export const registerWithEmailAndPassword = async ({
+  email,
+  password,
+  name
+}: {
+  email: string,
+  password: string,
+  name: string
+}) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     await setDoc(doc(database, "users", user.uid), {
       authProvider: "local",
+      name,
       email,
       role: "user",
       mensalista: false

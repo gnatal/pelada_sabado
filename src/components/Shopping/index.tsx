@@ -16,7 +16,7 @@ export default function Shopping() {
   }, [])
 
   function goToCheckout(product: IProduct) {
-    router.push(`/checkout?product=${product.uuid}`)
+    router.push(`/checkout?product=${product.product_uuid}`)
 
   }
 
@@ -24,7 +24,7 @@ export default function Shopping() {
     <div className='grid sm:grid-cols-1 md:grid-cols-3'>
       {products.map((product) => {
         return (
-          <div key={product.uuid}>
+          <div key={product.product_uuid}>
             <Card
               title={`${product.title} - ${centsToDollar(product.valor_centavos).toFixed(2)} R$`}
               text={product.description}

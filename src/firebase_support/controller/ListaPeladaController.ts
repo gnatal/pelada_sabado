@@ -1,15 +1,17 @@
 import { database } from 'utils/firebaseConfig'
-import { addDoc, collection, getDocs, doc, getDoc, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, getDocs, doc, getDoc, updateDoc, query, where } from 'firebase/firestore'
 import { IPelada } from 'firebase_support/models/Pelada'
-import { IListaPelada } from 'firebase_support/models/ListaPelada';
+import { createEmptyListaPelada, IListaPelada } from 'firebase_support/models/ListaPelada';
 import { IUser } from 'firebase_support/models/User';
 
 const table = 'lista_pelada';
 
-export const createListaPelada = async (pelada: IPelada) => {
+export const createListaPelada = async (pelada: IPelada): Promise<string | boolean> => {
   try {
     const newPelada = await addDoc(collection(database, table), {
-      ...pelada,
+      pelada_uuid: pelada.uid,
+      dia: pelada.dia,
+      createdAt: new Date(),
       users: []
     })
     return newPelada.id
@@ -38,12 +40,32 @@ export const addUserToListaPelada = async (user: IUser, lista_uuid: string) => {
     const docRef = doc(database, table, lista_uuid)
     const docSnap = await getDoc(docRef)
     const lista = docSnap.data();
+    console.log('LISTA', user)
     await updateDoc(docRef, {
-      pelada_uuid: lista?.pelada_uuid,
-      users: [...lista?.users, user]
+      users: [...lista?.users, {
+        name: user.name || user.email,
+        uid: user.uuid
+      }]
     })
   } catch (e) {
     console.log('error', e)
   }
+}
 
+
+export const getListaPeladaByPeladaId = async (pelada_uuid: string): Promise<IListaPelada | boolean> => {
+  try {
+    const q = query(collection(database, table), where('pelada_uuid', '==', pelada_uuid));
+    const docSnap = await getDocs(q)
+    if (docSnap.empty)
+      return false;
+    let lista: IListaPelada = createEmptyListaPelada()
+    docSnap.forEach((doc) => {
+      lista = { ...doc.data(), uid: doc.id }
+    })
+    return lista
+  } catch (e) {
+    console.log('error', e)
+    return false;
+  }
 }

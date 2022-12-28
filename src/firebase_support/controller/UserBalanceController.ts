@@ -17,3 +17,28 @@ export const addCreditToUser = async (uid: string, credits: number) => {
     console.log('error', e)
   }
 }
+
+export const removeCreditFromUser = async (uid: string) => {
+  try {
+    const docRef = doc(database, table, uid)
+    const docSnap = await getDoc(docRef)
+    const user = { uuid: docSnap.id, ...docSnap.data() } as IUserBalance;
+    user.credits -= 1;
+    await updateDoc(docRef, {
+      credits: user.credits
+    })
+  } catch (e) {
+    console.log('error', e)
+  }
+}
+
+export const getUserBalance = async (uid: string) => {
+  try {
+    const docRef = doc(database, table, uid)
+    const docSnap = await getDoc(docRef)
+    const user = { uuid: docSnap.id, ...docSnap.data() } as IUserBalance;
+    return user;
+  } catch (e) {
+    console.log('error', e)
+  }
+}

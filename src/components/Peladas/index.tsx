@@ -1,10 +1,12 @@
 import { getAllPelada } from 'firebase_support/controller/PeladaController'
 import { IPelada } from 'firebase_support/models/Pelada';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import PeladaSelector from './PeladaSelector';
 
 export default function Peladas() {
 
+  const router = useRouter();
   const [peladas, setPeladas] = useState<IPelada[]>([])
 
   async function getPeladas() {
@@ -39,6 +41,10 @@ export default function Peladas() {
     return peladas.filter((pelada) => compareStringDates(pelada.dia, formattedToday))
   }
 
+  function goToSubscribe(pelada: IPelada) {
+    router.push(`peladaInscricao?pelada=${pelada.uid}`)
+  }
+
   useEffect(() => {
     getPeladas().then((data) => {
       if (data) {
@@ -49,7 +55,7 @@ export default function Peladas() {
 
   return (
     <div>
-      {peladas.map((pelada) => (<PeladaSelector key={pelada.uid} pelada={pelada} />))}
+      {peladas.map((pelada) => (<PeladaSelector key={pelada.uid} pelada={pelada} onClick={goToSubscribe} />))}
     </div>
 
   )

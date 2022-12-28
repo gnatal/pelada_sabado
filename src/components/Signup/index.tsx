@@ -12,7 +12,15 @@ interface SignupInputs {
   email: string;
   password: string;
   confirmPassword: string;
+  name: string
 }
+
+const nameInputs = {
+  name: 'name',
+  type: 'text',
+  placeholder: 'Name',
+};
+
 
 const emailInputs = {
   name: 'email',
@@ -36,8 +44,7 @@ export default function Signup() {
   const formOptions = { resolver: yupResolver(validation.singupSchema) };
 
   const onSubmit: SubmitHandler<SignupInputs> = (data) => {
-    console.log(data);
-    registerWithEmailAndPassword(data.email, data.password)
+    registerWithEmailAndPassword({ ...data })
   };
 
   const {
@@ -62,6 +69,16 @@ export default function Signup() {
               roundTop
               register={register}
               name='email'
+              errors={errors}
+            />
+            <TextInput
+              label='Name'
+              elementId='name'
+              {...nameInputs}
+              roundBottom={false}
+              roundTop
+              register={register}
+              name='name'
               errors={errors}
             />
             <TextInput
