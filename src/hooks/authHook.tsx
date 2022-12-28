@@ -14,6 +14,7 @@ export function useFirebaseAuth() {
       if (user) {
         const fullUser = await getUserByUUID(user?.uid)
         setUser(fullUser)
+        sessionStorage.setItem('currentUser', JSON.stringify(fullUser))
       } else {
         setUser(null)
       }

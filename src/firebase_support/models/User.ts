@@ -3,7 +3,6 @@ export interface IUser {
   email: string;
   authProvider: string;
   role: string;
-  mensalista: boolean;
 }
 
 export function createEmptyUser(): IUser {
@@ -12,7 +11,6 @@ export function createEmptyUser(): IUser {
     email: '',
     authProvider: '',
     role: 'public',
-    mensalista: false
   }
   return user
 }
