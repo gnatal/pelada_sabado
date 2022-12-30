@@ -91,7 +91,7 @@ export default function PeladaInscricao() {
       </div>
       <Card
         imageAlt='peladaPm'
-        imageSrc='images/semanal.jpg'
+        imageSrc='/images/semanal.jpg'
         text={`Pelada da PM de sábado dia ${currentPelada?.dia} as ${currentPelada?.hora}`}
         title={`Pelada COPM - custo 1 crédito`}
         tags={['pelada', 'copm', 'sábado']}

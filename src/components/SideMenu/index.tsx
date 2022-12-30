@@ -18,15 +18,31 @@ function SideMenu({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: Function 
       className={`${isOpen ? 'block' : 'hidden'
         } sm:hidden bg-teal-500 h-screen w-screen`}
     >
-      <MenuItem linkURL={links.home.linkURL} linkLabel={links.home.linkLabel} />
-      <MenuItem
-        linkURL={links.about.linkURL}
-        linkLabel={links.about.linkLabel}
-      />
-      <MenuItem
-        linkURL={links.posts.linkURL}
-        linkLabel={links.posts.linkLabel}
-      />
+      {!user && (<>
+        <MenuItem
+          linkURL={links.home.linkURL}
+          linkLabel={links.home.linkLabel}
+        />
+        <MenuItem
+          linkURL={links.about.linkURL}
+          linkLabel={links.about.linkLabel}
+        />
+        <MenuItem
+          linkURL={links.posts.linkURL}
+          linkLabel={links.posts.linkLabel}
+        /></>)}
+      {user && (<>
+        <MenuItem linkURL={links.peladas.linkURL} linkLabel={links.peladas.linkLabel} />
+        <MenuItem linkURL={links.profile.linkURL} linkLabel={links.profile.linkLabel} />
+        <MenuItem linkURL={links.shopping.linkURL} linkLabel={links.shopping.linkLabel} />
+      </>)}
+      {
+        user?.role === 'admin' && (
+          <>
+            <MenuItem linkURL={links.createPelada.linkURL} linkLabel={links.createPelada.linkLabel} />
+          </>
+        )
+      }
       {user ?
 
         <div className='w-screen pl-6 pb-2 pt-2 border'>

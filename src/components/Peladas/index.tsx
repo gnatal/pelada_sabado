@@ -42,7 +42,7 @@ export default function Peladas() {
   }
 
   function goToSubscribe(pelada: IPelada) {
-    router.push(`peladaInscricao?pelada=${pelada.uid}`)
+    router.push(`/peladaInscricao?pelada=${pelada.uid}`)
   }
 
   useEffect(() => {
