@@ -39,8 +39,7 @@ const shopping = {
   linkLabel: 'Produtos'
 }
 
-
-export default {
+const exported = {
   shopping,
   peladas,
   createPelada,
@@ -50,3 +49,5 @@ export default {
   login,
   home,
 };
+
+export default exported 

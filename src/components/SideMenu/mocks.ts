@@ -1,5 +1,8 @@
 const link1 = 'asd';
 
-export default {
+const exported = {
   link1,
 };
+
+
+export default exported

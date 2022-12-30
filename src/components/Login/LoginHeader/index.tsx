@@ -1,6 +1,5 @@
 
 import React from 'react';
-import Link from 'next/link';
 
 export default function LoginHeader() {
   return (
@@ -11,16 +10,16 @@ export default function LoginHeader() {
         alt='Workflow'
       />
       <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>
-        Sign in to your account
+        Entrar:
       </h2>
       <p className='mt-2 text-center text-sm text-gray-600'>
-        Or
-        <Link
+        ou
+        <a
           href='/signup'
           className='font-medium text-indigo-600 hover:text-indigo-500'
         >
-          {'Don\'t have an account click here'}
-        </Link>
+          {'Não tem uma conta clique aqui'}
+        </a>
       </p>
     </div>
   );
