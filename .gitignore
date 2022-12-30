@@ -4,3 +4,4 @@ yarn.lock
 coverage
 src/utils/firebaseSDK.ts
 src/utils/firebaseConfig.ts
+out/*
