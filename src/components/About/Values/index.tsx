@@ -8,7 +8,7 @@ export default function Values() {
         <h1 className='text-2xl'>{Texts.valuesHeader}</h1>
       </div>
       <div className='mt-4'>
-        <p>{Texts.missionStatement}</p>
+        <p>{Texts.valuesStatement}</p>
       </div>
     </div>
   );

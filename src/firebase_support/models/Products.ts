@@ -5,6 +5,7 @@ export interface IProduct {
   image: string;
   title: string;
   description: string;
+  active: boolean;
 }
 
 export const createEmptyProduct = (): IProduct => {
@@ -15,6 +16,7 @@ export const createEmptyProduct = (): IProduct => {
     title: '',
     image: '',
     description: '',
+    active: false
   }
 }
 
