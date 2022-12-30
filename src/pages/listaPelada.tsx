@@ -1,0 +1,13 @@
+import ListaPelada from 'components/ListaPelada';
+import PrivateRoute from 'components/PrivateRoute';
+import React from 'react';
+
+function ListaPeladaPage() {
+  return (
+    <PrivateRoute allowedRoles={['admin']}>
+      <ListaPelada />
+    </PrivateRoute>
+  );
+}
+
+export default ListaPeladaPage;

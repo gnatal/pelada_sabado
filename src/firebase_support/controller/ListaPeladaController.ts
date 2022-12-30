@@ -40,11 +40,10 @@ export const addUserToListaPelada = async (user: IUser, lista_uuid: string) => {
     const docRef = doc(database, table, lista_uuid)
     const docSnap = await getDoc(docRef)
     const lista = docSnap.data();
-    console.log('LISTA', user)
     await updateDoc(docRef, {
       users: [...lista?.users, {
         name: user.name || user.email,
-        uid: user.uuid
+        uuid: user.uuid
       }]
     })
   } catch (e) {
@@ -52,20 +51,44 @@ export const addUserToListaPelada = async (user: IUser, lista_uuid: string) => {
   }
 }
 
+export const getListaPeladaById = async (uuid: string): Promise<IListaPelada> => {
+  try {
+    const docRef = doc(database, table, uuid)
+    const docSnap = await getDoc(docRef)
+    const lista = docSnap.data();
+    return { uid: docSnap.id, ...docSnap.data() } as IListaPelada
+  } catch (e) {
+    console.log('error', e)
+    return createEmptyListaPelada();
+  }
+}
 
-export const getListaPeladaByPeladaId = async (pelada_uuid: string): Promise<IListaPelada | boolean> => {
+export const getListaPeladaByPeladaId = async (pelada_uuid: string): Promise<IListaPelada> => {
   try {
     const q = query(collection(database, table), where('pelada_uuid', '==', pelada_uuid));
     const docSnap = await getDocs(q)
-    if (docSnap.empty)
-      return false;
     let lista: IListaPelada = createEmptyListaPelada()
+    if (docSnap.empty)
+      return lista;
     docSnap.forEach((doc) => {
       lista = { ...doc.data(), uid: doc.id }
     })
     return lista
   } catch (e) {
     console.log('error', e)
+    return createEmptyListaPelada();
+  }
+}
+
+export const isUserSubscribedToPelada = async (user_uuid: string, pelada_uuid: string): Promise<boolean> => {
+  try {
+    const q = query(collection(database, table), where('pelada_uuid', '==', pelada_uuid));
+    const docSnap = await getDocs(q)
+    docSnap.forEach((doc) => {
+      console.log(doc)
+    })
+    return true;
+  } catch (e) {
     return false;
   }
 }
