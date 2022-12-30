@@ -29,7 +29,7 @@ export const registerWithEmailAndPassword = async ({
       authProvider: "local",
       name,
       email,
-      role: "user",
+      role: "public",
       mensalista: false
     });
     await setDoc(doc(database, 'user_balance', user.uid), {
