@@ -45,7 +45,7 @@ export default function FisrtSection() {
               </div>
               <a
                 className='inline-block w-full sm:w-auto px-7 py-4 text-center font-medium bg-indigo-500 hover:bg-indigo-600 text-white rounded transition duration-250'
-                href='/singup'
+                href='/signup'
               >
                 Cadastre-se
               </a>
