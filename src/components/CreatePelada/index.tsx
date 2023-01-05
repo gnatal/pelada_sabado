@@ -7,6 +7,7 @@ import LockIcon from '../Icons/LockIcons';
 import TextInput from '../Form/Input';
 import PeladaHeader from './CreatePeladaHeader';
 import { useRouter } from 'next/router';
+import { toast } from "react-toastify";
 import { IPelada } from 'firebase_support/models/Pelada';
 import { createPelada } from 'firebase_support/controller/PeladaController';
 
@@ -23,6 +24,7 @@ const horaInputs = {
 };
 
 export default function CreatePelada() {
+  const router = useRouter();
   const formOptions = { resolver: yupResolver(peladaSchema) };
   const {
     register,
@@ -33,7 +35,8 @@ export default function CreatePelada() {
   const onSubmit: SubmitHandler<IPelada> = async (data) => {
     try {
       const response = await createPelada(data)
-      console.log('pelada', data, response)
+      toast('Pelada criada com sucesso', { hideProgressBar: true, autoClose: 2000, type: 'success' })
+      router.replace('/peladas')
     } catch (e) {
       console.log(e)
     }

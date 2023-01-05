@@ -86,9 +86,9 @@ export const isUserSubscribedToPelada = async (user_uuid: string, pelada_uuid: s
     const docSnap = await getDocs(q)
     let isSubscribed = false;
     docSnap.forEach((doc) => {
-      console.log(doc)
+      console.log(doc.data())
       doc.data().users.forEach((user: any) => {
-        if (user.uid === user_uuid) isSubscribed = true;
+        if (user.uuid === user_uuid) isSubscribed = true;
       })
     })
     return isSubscribed;

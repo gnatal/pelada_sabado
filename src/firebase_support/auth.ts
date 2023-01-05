@@ -2,6 +2,7 @@ import { auth, database } from 'utils/firebaseConfig'
 import { setPersistence, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { createUserWithEmailAndPassword, browserLocalPersistence } from 'firebase/auth'
 import { setDoc, collection, query, where, doc } from 'firebase/firestore'
+import { FirebaseError } from 'firebase/app'
 
 export const loginWithEmailAndPassword = async (email: string, password: string) => {
   try {
@@ -21,7 +22,7 @@ export const registerWithEmailAndPassword = async ({
   email: string,
   password: string,
   name: string
-}) => {
+}): Promise<false | FirebaseError> => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -35,15 +36,16 @@ export const registerWithEmailAndPassword = async ({
     await setDoc(doc(database, 'user_balance', user.uid), {
       credits: 0
     })
-  } catch (err) {
-    console.error(err);
+    return false;
+  } catch (err: any) {
+    return (err as FirebaseError)
   }
 };
 
 
 export const logout = async () => {
   try {
-    signOut(auth)
+    await signOut(auth)
   } catch (e) {
     console.log(e)
   }

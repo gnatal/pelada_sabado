@@ -21,15 +21,19 @@ export default function Peladas() {
   function compareStringDates(date1: string, date2: string) {
     const [year1, month1, day1] = date1.split('-');
     const [year2, month2, day2] = date2.split('-');
-    if (year1 > year2) {
+    if (Number(year1) > Number(year2)) {
       return true;
     } else if (year1 === year2) {
-      if (month1 > month2) return true
-      else if (month1 === month2) {
-        if (day1 > day2) return true
+      if (Number(month1) > Number(month2)) {
+        return true
+      }
+      else if (Number(month1) === Number(month2)) {
+        if (Number(day1) > Number(day2)) return true
         return false;
       }
-      else return false
+      else {
+        return false
+      }
     } else {
       return false;
     }

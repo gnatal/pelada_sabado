@@ -7,6 +7,9 @@ import LockIcon from '../Icons/LockIcons';
 import TextInput from '../Form/Input';
 import PrivacyPolicy from './PrivacyPolicy';
 import { registerWithEmailAndPassword } from 'firebase_support/auth';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import { FirebaseError } from 'firebase/app';
 
 interface SignupInputs {
   email: string;
@@ -41,10 +44,26 @@ const passwordConfirmInputs = {
 };
 
 export default function Signup() {
+  const router = useRouter();
   const formOptions = { resolver: yupResolver(validation.singupSchema) };
 
-  const onSubmit: SubmitHandler<SignupInputs> = (data) => {
-    registerWithEmailAndPassword({ ...data })
+  function generateErrorMessage(firebaseError: FirebaseError) {
+    if (firebaseError.code === 'auth/email-already-in-use')
+      return 'Este usuário já existe por favor utilize outro e-mail'
+    return 'Erro desconhecido tente novamente mais tarde'
+  }
+
+  const onSubmit: SubmitHandler<SignupInputs> = async (data) => {
+    const result = await registerWithEmailAndPassword({ ...data })
+    console.log(result)
+    if (!result) {
+      toast('Usuário criado com sucesso', { autoClose: 2000 });
+      setTimeout(() => {
+        router.replace('/profile')
+      }, 2000)
+    } else {
+      toast.error(generateErrorMessage(result), { autoClose: 2000 })
+    }
   };
 
   const {

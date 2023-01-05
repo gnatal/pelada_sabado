@@ -18,7 +18,7 @@ export default function LoginHeader() {
           href='/signup'
           className='font-medium text-indigo-600 hover:text-indigo-500'
         >
-          {'Não tem uma conta clique aqui'}
+          {'\t Não tem uma conta clique aqui'}
         </a>
       </p>
     </div>

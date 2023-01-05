@@ -39,7 +39,11 @@ export default function PeladaInscricao() {
       const pelada = await fetchPelada();
       if (pelada.uid) {
         let listaPelada = await getListaPeladaByPeladaId(pelada.uid);
-        const isUserSubscribed = await isUserSubscribedToPelada(user.uuid, (listaPelada as IListaPelada).uid)
+        if (listaPelada === createEmptyPelada()) {
+          console.log('lista pelada', listaPelada)
+        }
+        const isUserSubscribed = await isUserSubscribedToPelada(user.uuid, pelada.uid)
+        console.log('subscribeed', isUserSubscribed)
         if (isUserSubscribed) {
           router.push(`/listaPelada?lista=${listaPelada.uid}`)
         }
