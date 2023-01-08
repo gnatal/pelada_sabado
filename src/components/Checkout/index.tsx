@@ -62,9 +62,26 @@ export default function Checkout() {
         imageAlt={'Copm'}
         tags={['copm']}
       />
-      <div className='p-10'>
+      <div className='p-10 text-center sm:text-left'>
         Valor: {`${centsToDollar(product.valor_centavos).toFixed(2)} R$`}
-        <p>Pix para pagamento: guilhermenatal47@gmail.com</p>
+        <p>Pix para pagamento</p>
+        <br />
+        <div className='grid grid-cols-1 sm:grid-cols-2'>
+          <div className='mt-5 flex flex-col justify-center content-center text-center'>
+            <h6>QrCode email:<br /> {'THIAGOHC84@GMAIL.COM'.toLowerCase()}</h6>
+            <div className='w-full flex justify-center content-center'>
+              <img className='w-40' src="/images/QrCodeEmail.png" alt="QrCode email" />
+            </div>
+
+          </div>
+          <div className='mt-5 flex flex-col justify-center content-center text-center'>
+            <h6>QrCode Celular: :<br />(61)98205-7972</h6>
+            <div className='w-full flex justify-center content-center'>
+              <img className='w-40' src="/images/QrCodeCelular.png" alt="QrCode celular" />
+            </div>
+
+          </div>
+        </div>
 
         <div className='py-10'>
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="file_input">Upload file</label>

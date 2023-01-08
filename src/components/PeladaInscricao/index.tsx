@@ -8,6 +8,7 @@ import { IUser } from 'firebase_support/models/User';
 import { IUserBalance } from 'firebase_support/models/UserBalance';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { getUser } from 'utils/userSessionManager';
 
 export default function PeladaInscricao() {
@@ -68,13 +69,20 @@ export default function PeladaInscricao() {
       const user = getUser();
       if (pelada.uid) {
         let listaPelada = await getListaPeladaByPeladaId(pelada.uid);
-        if (!listaPelada) {
+        console.log('LISTA PELADA', listaPelada, pelada)
+        if (!listaPelada.uid) {
           const peladaUid = await createListaPelada(pelada)
           listaPelada = await getListaPeladaByPeladaId(pelada.uid);
         }
+        if (!listaPelada.uid)
+          throw new Error('Erro no sistema tente mais tarde')
         if (listaPelada) {
           await addUserToListaPelada(user, listaPelada?.uid)
           await removeCreditFromUser(user.uuid)
+          toast.success('Incrição na pelada feita com sucesso', { autoClose: 2000 })
+          setTimeout(() => {
+            router.push(`/listaPelada?lista=${listaPelada.uid}`)
+          }, 2100)
         }
 
       }

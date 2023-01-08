@@ -52,7 +52,8 @@ export default function Peladas() {
   useEffect(() => {
     getPeladas().then((data) => {
       if (data) {
-        setPeladas(filterPeladasPast(data))
+        const allPeladas = data.filter((pelada) => pelada.dia)
+        setPeladas(filterPeladasPast(allPeladas))
       }
     })
   }, [])

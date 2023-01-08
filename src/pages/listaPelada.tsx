@@ -4,7 +4,7 @@ import React from 'react';
 
 function ListaPeladaPage() {
   return (
-    <PrivateRoute allowedRoles={['admin']}>
+    <PrivateRoute allowedRoles={['admin', 'public']}>
       <ListaPelada />
     </PrivateRoute>
   );
