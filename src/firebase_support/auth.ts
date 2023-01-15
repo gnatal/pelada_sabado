@@ -35,6 +35,8 @@ export const registerWithEmailAndPassword = async ({
     });
     await setDoc(doc(database, 'user_balance', user.uid), {
       credits: 0
+      name,
+      email,
     })
     return false;
   } catch (err: any) {

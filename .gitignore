@@ -7,3 +7,5 @@ src/utils/firebaseConfig.ts
 out/*
 .env.production
 .env
+.env.local
+.env.development

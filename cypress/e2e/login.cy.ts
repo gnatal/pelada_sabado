@@ -8,3 +8,5 @@ describe('login spec', () => {
     cy.get('button.group').click()
   })
 })
+
+export { }
